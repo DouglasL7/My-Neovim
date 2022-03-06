@@ -8,9 +8,11 @@ call plug#begin()
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'dense-analysis/ale'
-  Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+  Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'yarn install'}
   Plug 'honza/vim-snippets'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'ap/vim-css-color'
 
   if (has("nvim"))
     Plug 'nvim-lua/plenary.nvim'
@@ -48,6 +50,10 @@ filetype plugin on   " Load the plugin file for the file type, if any
 filetype indent on   " Load the indent file for the file type, if any
 
 
+" spell languages
+set spell spelllang=en_us
+
+
 " Remaps """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Create a tab
 nmap te :tabe<CR>
@@ -72,7 +78,7 @@ nmap tc :!
 
 "" Autocmd""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! HighlightWordUnderCursor()
-    if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
+    if getline(".")[col(".")-1] !~# 's[[:punct:][:blank:]]'
         exec 'match' 'Search' '/\V\<'.expand('<cword>').'\>/'
     else
         match none
@@ -176,5 +182,7 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 
 
+" Language server stuff
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 nmap <C-a> :NERDTreeToggle<CR>
