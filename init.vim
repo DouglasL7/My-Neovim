@@ -28,7 +28,7 @@ set tabstop=2        " Show existing tab with 2 spaces width
 set softtabstop=2    " Show existing tab with 2 spaces width
 set shiftwidth=2     " When indenting with '>', use 2 spaces width
 set expandtab        " On pressing tab, insert 4 spaces
-set colorcolumn=100  " Draws a line at the given line to keep aware of the line size
+set colorcolumn=85  " Draws a line at the given line to keep aware of the line size
 set smarttab         " insert tabs on the start of a line according to shiftwidth
 set smartindent      " Automatically inserts one extra level of indentation in some cases
 set hidden           " Hides the current buffer when a new file is openned
